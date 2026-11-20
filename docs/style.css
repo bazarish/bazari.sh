@@ -487,24 +487,6 @@ button.btn {
     cursor: pointer;
 }
 
-.swap {
-    display: inline-grid;
-}
-
-.swap > span {
-    grid-area: 1 / 1;
-    text-align: center;
-}
-
-#copy-done,
-.copied #copy-idle {
-    visibility: hidden;
-}
-
-.copied #copy-done {
-    visibility: visible;
-}
-
 [hidden] {
     display: none !important;
 }

@@ -10,7 +10,6 @@ const kRightToLeft = new Set(["ar"]);
 // The challenge's freshness window, docs-main api/SignInWithKey.md section 2.
 const kLoginWindowSeconds = 300;
 const kFingerprintGroup = 4;
-const kCopyFeedbackMs = 1500;
 const kMillisPerSecond = 1000;
 
 const kText = {
@@ -20,8 +19,6 @@ const kText = {
         homeLead: "bazari.sh links open internal links in it.",
         download: "Download Bazarish",
         open: "Open in Bazarish",
-        copy: "Copy for the app",
-        copied: "Copied",
         note: "Everything after # stays in the browser and is not sent to the server.",
         inviteTitle: "Invitation to Bazarish",
         serverTitle: "Bazarish server",
@@ -30,7 +27,7 @@ const kText = {
         gatewayTitle: "External gateway",
         gatewayAddress: "Address",
         gatewayPath: "Path",
-        gatewayKey: "Key",
+        key: "Key",
         signTitle: "Sign-in with a key",
         fingerprint: "Fingerprint",
         entryPoints: "Entry points",
@@ -53,8 +50,6 @@ const kText = {
         homeLead: "Ссылки bazari.sh открывают в нём внутренние ссылки.",
         download: "Скачать Bazarish",
         open: "Открыть в Bazarish",
-        copy: "Скопировать для приложения",
-        copied: "Скопировано",
         note: "Всё после # остаётся в браузере и не отправляется на сервер.",
         inviteTitle: "Приглашение в Bazarish",
         serverTitle: "Сервер Bazarish",
@@ -63,7 +58,7 @@ const kText = {
         gatewayTitle: "Внешний шлюз",
         gatewayAddress: "Адрес",
         gatewayPath: "Путь",
-        gatewayKey: "Ключ",
+        key: "Ключ",
         signTitle: "Вход с ключом",
         fingerprint: "Отпечаток",
         entryPoints: "Точки входа",
@@ -86,8 +81,6 @@ const kText = {
         homeLead: "Los enlaces de bazari.sh abren en él enlaces internos.",
         download: "Descargar Bazarish",
         open: "Abrir en Bazarish",
-        copy: "Copiar para la aplicación",
-        copied: "Copiado",
         note: "Todo lo que va después de # se queda en el navegador y no se envía al servidor.",
         inviteTitle: "Invitación a Bazarish",
         serverTitle: "Servidor de Bazarish",
@@ -96,7 +89,7 @@ const kText = {
         gatewayTitle: "Pasarela externa",
         gatewayAddress: "Dirección",
         gatewayPath: "Ruta",
-        gatewayKey: "Clave",
+        key: "Clave",
         signTitle: "Inicio de sesión con clave",
         fingerprint: "Huella",
         entryPoints: "Puntos de entrada",
@@ -119,8 +112,6 @@ const kText = {
         homeLead: "bazari.sh 链接在其中打开内部链接。",
         download: "下载 Bazarish",
         open: "在 Bazarish 中打开",
-        copy: "复制到应用",
-        copied: "已复制",
         note: "# 之后的内容只留在浏览器中，不会发送到服务器。",
         inviteTitle: "Bazarish 邀请",
         serverTitle: "Bazarish 服务器",
@@ -129,7 +120,7 @@ const kText = {
         gatewayTitle: "外部网关",
         gatewayAddress: "地址",
         gatewayPath: "路径",
-        gatewayKey: "密钥",
+        key: "密钥",
         signTitle: "使用密钥登录",
         fingerprint: "指纹",
         entryPoints: "入口",
@@ -152,8 +143,6 @@ const kText = {
         homeLead: "تفتح روابط bazari.sh فيه روابط داخلية.",
         download: "تنزيل Bazarish",
         open: "فتح في Bazarish",
-        copy: "نسخ للتطبيق",
-        copied: "تم النسخ",
         note: "يبقى كل ما بعد # في المتصفح ولا يُرسل إلى الخادم.",
         inviteTitle: "دعوة إلى Bazarish",
         serverTitle: "خادم Bazarish",
@@ -162,7 +151,7 @@ const kText = {
         gatewayTitle: "بوابة خارجية",
         gatewayAddress: "العنوان",
         gatewayPath: "المسار",
-        gatewayKey: "المفتاح",
+        key: "المفتاح",
         signTitle: "تسجيل الدخول بالمفتاح",
         fingerprint: "البصمة",
         entryPoints: "نقاط الدخول",
@@ -182,7 +171,6 @@ const kText = {
 };
 
 let language = chooseLanguage();
-let copiedTimer = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("lang").hidden = false;
@@ -192,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
             button.closest("details").open = false;
         });
     }
-    document.getElementById("copy").addEventListener("click", copyLink);
     render();
 });
 addEventListener("hashchange", render);
@@ -333,7 +320,7 @@ function describeKind(link) {
             rows: [
                 [t("gatewayAddress"), new URL(url).host, true],
                 [t("gatewayPath"), new URL(url).pathname, true],
-                [t("gatewayKey"), first(fields, "fp"), true],
+                [t("key"), first(fields, "fp"), true],
             ],
             openable: true,
         };
@@ -349,6 +336,7 @@ const kShownElsewhere = new Set(["v", "name"]);
 const kFieldLabels = {
     fp: "fingerprint",
     dest: "destination",
+    key: "key",
     facade: "entryPoints",
     reseed: "reseeds",
 };
@@ -433,10 +421,6 @@ function render() {
     } else {
         open.removeAttribute("href");
     }
-    const copy = document.getElementById("copy");
-    copy.hidden = !view.openable;
-    document.getElementById("copy-idle").textContent = t("copy");
-    document.getElementById("copy-done").textContent = t("copied");
 
     for (const id of ["download", "download-also"]) {
         const download = document.getElementById(id);
@@ -467,12 +451,3 @@ function fillRows(rows) {
     list.hidden = rows.length === 0;
 }
 
-async function copyLink() {
-    const button = document.getElementById("copy");
-    await navigator.clipboard.writeText(kSchemePrefix + tail());
-    button.classList.add("copied");
-    clearTimeout(copiedTimer);
-    copiedTimer = setTimeout(() => {
-        button.classList.remove("copied");
-    }, kCopyFeedbackMs);
-}
