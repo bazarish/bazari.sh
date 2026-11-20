@@ -1,0 +1,10 @@
+# bazari.sh
+
+The page that Bazarish links lead to: `https://bazari.sh/#<kind>?<query>`.
+
+It reads the link from the fragment, which the browser never sends to the server,
+shows what the link carries and hands it to the app as `bazarish://<kind>?<query>`.
+Without a fragment it points to the client downloads and to the main site,
+[bazarish.org](https://github.com/bazarish/bazarish.org).
+
+`site/` is static and needs no build: deploy it as it is.

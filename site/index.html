@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<title>Bazarish</title>
+<meta name="description" content="Bazarish links open in the app.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Onest.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="link.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <a class="home" href="https://bazarish.org/" id="home"><img src="logo-onlight.svg" alt="Bazarish" width="170" height="32"></a>
+  <div class="top-end">
+    <nav class="lang" aria-label="Language" id="lang" hidden>
+      <details>
+        <summary id="lang-current">English</summary>
+        <ul>
+        <li><button type="button" data-lang="en" lang="en">English</button></li>
+        <li><button type="button" data-lang="ru" lang="ru">Русский</button></li>
+        <li><button type="button" data-lang="es" lang="es">Español</button></li>
+        <li><button type="button" data-lang="zh" lang="zh">中文</button></li>
+        <li><button type="button" data-lang="ar" lang="ar">العربية</button></li>
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="screen">
+    <div class="card">
+      <p class="kind" id="kind" hidden></p>
+      <h1 class="statement" id="title">Bazarish links open in the app.</h1>
+      <p class="lead" id="lead">Install the client to open invitations, server links and device pairing.</p>
+      <dl class="fields" id="fields" hidden></dl>
+      <div class="actions">
+        <a class="btn btn-primary" id="open" hidden>Open in Bazarish</a>
+        <button class="btn btn-ghost" type="button" id="copy" hidden><span class="swap"><span id="copy-idle">Copy for the app</span><span id="copy-done" aria-hidden="true">Copied</span></span></button>
+        <a class="btn btn-ghost" id="download-also" href="https://bazarish.org/#download" hidden>Download Bazarish</a>
+        <a class="btn btn-primary" id="download" href="https://bazarish.org/#download">Download Bazarish</a>
+        <a class="btn btn-ghost" id="main-site" href="https://bazarish.org/">Main site</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <p id="note">Everything after # stays in the browser and is not sent to the server.</p>
+  <p class="foot-links"><a href="https://bazarish.org">bazarish.org</a> <a href="http://bazarish.i2p">bazarish.i2p</a></p>
+</footer>
+</body>
+</html>
