@@ -223,13 +223,19 @@ function chooseLanguage() {
     return kDefaultLanguage;
 }
 
-function setLanguage(code) {
-    language = code;
+function storeLanguage(code) {
     try {
         localStorage.setItem(kChosenLanguageKey, code);
-    } finally {
-        render();
+    } catch (error) {
+        return false;
     }
+    return true;
+}
+
+function setLanguage(code) {
+    language = code;
+    storeLanguage(code);
+    render();
 }
 
 function t(key) {
