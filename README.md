@@ -7,4 +7,4 @@ shows what the link carries and hands it to the app as `bazarish://<kind>?<query
 Without a fragment it points to the client downloads and to the main site,
 [bazarish.org](https://github.com/bazarish/bazarish.org).
 
-`site/` is static and needs no build: deploy it as it is.
+`docs/` is static and needs no build: GitHub Pages serves it as it is.
