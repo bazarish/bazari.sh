@@ -2,6 +2,7 @@
 
 const kSchemePrefix = "bazarish://";
 const kMainSite = "https://bazarish.org/";
+const kI2pSite = "http://bazarish.i2p/";
 const kDownloadAnchor = "#download";
 const kDefaultLanguage = "en";
 const kChosenLanguageKey = "language";
@@ -242,8 +243,12 @@ function t(key) {
     return kText[language][key];
 }
 
+function sitePage(site) {
+    return language === kDefaultLanguage ? site : `${site}${language}/`;
+}
+
 function mainSitePage() {
-    return language === kDefaultLanguage ? kMainSite : `${kMainSite}${language}/`;
+    return sitePage(kMainSite);
 }
 
 function tail() {
@@ -411,6 +416,8 @@ function render() {
         button.setAttribute("aria-current", String(button.dataset.lang === language));
     }
     document.getElementById("home").href = mainSitePage();
+    document.getElementById("foot-site").href = mainSitePage();
+    document.getElementById("foot-i2p").href = sitePage(kI2pSite);
 
     const link = tail();
     const view = link ? describe(link) : { title: t("homeTitle"), lead: t("homeLead") };
