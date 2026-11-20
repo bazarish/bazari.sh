@@ -19,7 +19,6 @@ const kText = {
         homeTitle: "Bazarish messenger",
         homeLead: "bazari.sh links open internal links in it.",
         download: "Download Bazarish",
-        mainSite: "Main site",
         open: "Open in Bazarish",
         copy: "Copy for the app",
         copied: "Copied",
@@ -53,7 +52,6 @@ const kText = {
         homeTitle: "Мессенджер Bazarish",
         homeLead: "Ссылки bazari.sh открывают в нём внутренние ссылки.",
         download: "Скачать Bazarish",
-        mainSite: "Основной сайт",
         open: "Открыть в Bazarish",
         copy: "Скопировать для приложения",
         copied: "Скопировано",
@@ -87,7 +85,6 @@ const kText = {
         homeTitle: "Mensajero Bazarish",
         homeLead: "Los enlaces de bazari.sh abren en él enlaces internos.",
         download: "Descargar Bazarish",
-        mainSite: "Sitio principal",
         open: "Abrir en Bazarish",
         copy: "Copiar para la aplicación",
         copied: "Copiado",
@@ -121,7 +118,6 @@ const kText = {
         homeTitle: "Bazarish 即时通讯",
         homeLead: "bazari.sh 链接在其中打开内部链接。",
         download: "下载 Bazarish",
-        mainSite: "主站",
         open: "在 Bazarish 中打开",
         copy: "复制到应用",
         copied: "已复制",
@@ -155,7 +151,6 @@ const kText = {
         homeTitle: "تطبيق المراسلة Bazarish",
         homeLead: "تفتح روابط bazari.sh فيه روابط داخلية.",
         download: "تنزيل Bazarish",
-        mainSite: "الموقع الرئيسي",
         open: "فتح في Bazarish",
         copy: "نسخ للتطبيق",
         copied: "تم النسخ",
@@ -450,10 +445,6 @@ function render() {
     }
     document.getElementById("download").hidden = Boolean(view.openable);
     document.getElementById("download-also").hidden = !view.openable;
-    const mainSite = document.getElementById("main-site");
-    mainSite.textContent = t("mainSite");
-    mainSite.href = mainSitePage();
-    mainSite.hidden = Boolean(link);
 
     document.getElementById("note").textContent = t("note");
 }
