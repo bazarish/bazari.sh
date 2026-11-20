@@ -15,8 +15,8 @@ const kMillisPerSecond = 1000;
 const kText = {
     en: {
         language: "English",
-        homeTitle: "Bazarish links open in the app.",
-        homeLead: "Install the client to open invitations, server links and device pairing.",
+        homeTitle: "Bazarish messenger",
+        homeLead: "bazari.sh links open internal links in it.",
         download: "Download Bazarish",
         mainSite: "Main site",
         open: "Open in Bazarish",
@@ -49,8 +49,8 @@ const kText = {
     },
     ru: {
         language: "Русский",
-        homeTitle: "Ссылки Bazarish открываются в приложении.",
-        homeLead: "Установите клиент, чтобы открывать приглашения, ссылки серверов и подключение устройств.",
+        homeTitle: "Мессенджер Bazarish",
+        homeLead: "Ссылки bazari.sh открывают в нём внутренние ссылки.",
         download: "Скачать Bazarish",
         mainSite: "Основной сайт",
         open: "Открыть в Bazarish",
@@ -83,8 +83,8 @@ const kText = {
     },
     es: {
         language: "Español",
-        homeTitle: "Los enlaces de Bazarish se abren en la aplicación.",
-        homeLead: "Instala el cliente para abrir invitaciones, enlaces de servidor y la vinculación de dispositivos.",
+        homeTitle: "Mensajero Bazarish",
+        homeLead: "Los enlaces de bazari.sh abren en él enlaces internos.",
         download: "Descargar Bazarish",
         mainSite: "Sitio principal",
         open: "Abrir en Bazarish",
@@ -117,8 +117,8 @@ const kText = {
     },
     zh: {
         language: "中文",
-        homeTitle: "Bazarish 链接在应用中打开。",
-        homeLead: "安装客户端即可打开邀请、服务器链接和设备配对。",
+        homeTitle: "Bazarish 即时通讯",
+        homeLead: "bazari.sh 链接在其中打开内部链接。",
         download: "下载 Bazarish",
         mainSite: "主站",
         open: "在 Bazarish 中打开",
@@ -151,8 +151,8 @@ const kText = {
     },
     ar: {
         language: "العربية",
-        homeTitle: "تُفتح روابط Bazarish في التطبيق.",
-        homeLead: "ثبّت العميل لفتح الدعوات وروابط الخوادم وربط الأجهزة.",
+        homeTitle: "تطبيق المراسلة Bazarish",
+        homeLead: "تفتح روابط bazari.sh فيه روابط داخلية.",
         download: "تنزيل Bazarish",
         mainSite: "الموقع الرئيسي",
         open: "فتح في Bazarish",
